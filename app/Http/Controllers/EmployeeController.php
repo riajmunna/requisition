@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdvanceHistory;
 use App\Models\Customer;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Employee;
+use App\Models\Requisition;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
 
     public function addEmployee(){
-        return view('backend.employee.add-employee');
+        $departments = Department::all();
+        $designations = Designation::all();
+        return view('backend.employee.add-employee',compact('departments','designations'));
     }
 
     public function index()
     {
         $employees = Employee::all();
-
         return view('backend.employee.view-employee', compact('employees'));
     }
 
@@ -39,9 +45,10 @@ class EmployeeController extends Controller
 
     public function editEmployee($id)
     {
-        return view('backend.employee.edit-employee', [
-            'employees' => Employee::find($id)
-        ]);
+        $departments = Department::all();
+        $designations = Designation::all();
+        $employees = Employee::where('id',$id)->first();
+        return view('backend.employee.edit-employee',compact('designations','departments','employees'));
     }
 
     public function updateEmployee(Request $request)
@@ -49,5 +56,6 @@ class EmployeeController extends Controller
         Employee::updateEmployee($request);
         return redirect(route('employee'));
     }
+
 
 }

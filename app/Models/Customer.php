@@ -22,4 +22,9 @@ class Customer extends Model
         self::$customer->address = $request->address;
         self::$customer->save();
     }
+
+    public function advance()
+    {
+        return $this->hasMany(AdvanceHistory::class);
+    }
 }

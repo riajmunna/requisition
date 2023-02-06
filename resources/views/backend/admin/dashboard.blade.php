@@ -1,7 +1,7 @@
 @extends('backend.admin.master')
 
 @section('title')
-    Admin Dashboard
+    Dashboard
 @endsection
 
 @section('content')

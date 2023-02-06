@@ -53,7 +53,7 @@
                                 <table style="margin-left: auto;margin-right: auto;">
                                     <tr>
                                         <td>
-                                            <a href="{{route('edit.employee',['id'=>$item->id])}}"
+                                            <a href="{{route('edit.employee',$item->id)}}"
                                                class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                         <td>&nbsp;</td>

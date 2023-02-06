@@ -41,11 +41,21 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Department</label>
-                                        <input type="text" class="form-control" name="department" value="{{ $employees->user->department }}" required>
+                                        <select class="form-control" name="department" id="">
+                                            <option value="{{$employees->user->department}}">{{$employees->user->department}}</option>
+                                            @foreach($departments as $department)
+                                                <option value="{{$department->name}}">{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Designation</label>
-                                        <input type="text" class="form-control" name="designation" value="{{ $employees->user->designation }}" required>
+                                        <select class="form-control" name="designation" id="">
+                                            <option value="{{$employees->user->designation}}">{{$employees->user->designation}}</option>
+                                            @foreach($designations as $designation)
+                                                <option value="{{$designation->name}}">{{$designation->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +75,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Gender </label>
-                                        <select name="gender">
+                                        <select class="form-control" name="gender">
                                             <option value="{{$employees->user->gender}}" selected>{{$employees->user->gender}}</option>
                                             <option value="male"> Male</option>
                                             <option value="female"> Female</option>
@@ -74,7 +84,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Blood Group </label>
-                                        <select name="blood">
+                                        <select class="form-control" name="blood">
                                             <option value="{{$employees->user->blood}}" selected>{{$employees->user->blood}}</option>
                                             <option value="A+"> A+</option>
                                             <option value="A-"> A-</option>
