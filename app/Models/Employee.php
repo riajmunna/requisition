@@ -7,13 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    use HasFactory;
-
-    protected $table = 'employees';
-    protected $fillable = ['name', 'phone', 'department', 'designation', 'balance', 'gender', 'blood', 'dob', 'present_address', 'permanent_address'];
-
     public static $employee,$user;
-
+    use HasFactory;
     public static function saveEmployee($request)
     {
         self::$employee = new User();

@@ -19,9 +19,9 @@
                      data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('customer')}}">Customer</a>
-                        <a class="nav-link" href="#">Department</a>
-                        <a class="nav-link" href="#">Designation</a>
-                        <a class="nav-link" href="#">Site</a>
+                        <a class="nav-link" href="{{route('department')}}">Department</a>
+                        <a class="nav-link" href="{{route('designation')}}">Designation</a>
+                        <a class="nav-link" href="{{route('site')}}">Site</a>
                     </nav>
                 </div>
                 {{--  Employees  --}}

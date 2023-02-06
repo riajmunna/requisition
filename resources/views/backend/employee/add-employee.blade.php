@@ -45,15 +45,25 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Department</label>
-                                        <input type="text" class="form-control" name="department" required>
+                                        <select class="form-control" name="department" id="">
+                                            <option value="none">Select</option>
+                                            @foreach($department as $department)
+                                                <option value="{{$department->id}}">{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Designation</label>
-                                        <input type="text" class="form-control" name="designation" required>
+                                        <select class="form-control" name="designation" id="">
+                                            <option value="none">Select</option>
+                                            @foreach($designation as $designation)
+                                                <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Balance</label>
@@ -69,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Gender </label>
-                                        <select name="gender">
+                                        <select class="form-control" name="gender">
                                             <option value="none" selected> Select</option>
                                             <option value="male"> Male</option>
                                             <option value="female"> Female</option>
@@ -78,8 +88,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Blood Group </label>
-                                        <select name="blood">
-                                            <option value="none" selected> Select Blood Group</option>
+                                        <select class="form-control" name="blood">
+                                            <option value="none" selected> Select</option>
                                             <option value="A+"> A+</option>
                                             <option value="A-"> A-</option>
                                             <option value="B+"> B+</option>
@@ -104,9 +114,9 @@
                             </div>
 
                             <div class="mb-3">
-{{--                                <div class="d-grid">--}}
-                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
-{{--                                </div>--}}
+                                {{--                                <div class="d-grid">--}}
+                                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                {{--                                </div>--}}
                             </div>
                         </form>
                     </div>

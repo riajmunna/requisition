@@ -14,7 +14,8 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <button type="submit" class="btn btn-secondary btn-sm">Add Employee</button>
+                <a href="{{route('add.employee')}}" class="btn btn-secondary btn-sm"><i class="fa-sharp fa-solid fa-plus"></i> Add Customer</a>
+
             </div>
             <div class="card-body">
                 <table id="datatablesSimple" style="text-align: center; font-size: 12px">
@@ -23,6 +24,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Phone Number</th>
+                        <th>Email</th>
                         <th>Department</th>
                         <th>Designation</th>
                         <th>Balance</th>
@@ -41,6 +43,7 @@
                             <td>{{ $key++ }}</td>
                             <td>{{ $item->user->name }}</td>
                             <td>{{ $item->user->phone }}</td>
+                            <td>{{ $item->user->email }}</td>
                             <td>{{ $item->user->department }}</td>
                             <td>{{ $item->user->designation }}</td>
                             <td>{{ $item->user->balance }}</td>

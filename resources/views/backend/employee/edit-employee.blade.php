@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Balance</label>
@@ -65,7 +65,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Gender </label>
-                                        <select name="gender">
+                                        <select class="form-control" name="gender">
                                             <option value="{{$employees->user->gender}}" selected>{{$employees->user->gender}}</option>
                                             <option value="male"> Male</option>
                                             <option value="female"> Female</option>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Blood Group </label>
-                                        <select name="blood">
+                                        <select class="form-control" name="blood">
                                             <option value="{{$employees->user->blood}}" selected>{{$employees->user->blood}}</option>
                                             <option value="A+"> A+</option>
                                             <option value="A-"> A-</option>
