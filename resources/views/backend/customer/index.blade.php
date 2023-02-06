@@ -1,72 +1,66 @@
 @extends('backend.admin.master')
 
 @section('title')
-    Employee | List
+    Customer | List
 @endsection
 
 @section('content')
-
-
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Employees Info</h1>
+        <h1 class="mt-4">Customer Info</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-item active">Employees</li>
         </ol>
 
+        <div class="mt-4">
+            @include('backend.admin.include.alert')
+        </div>
+
         <div class="card mb-4">
             <div class="card-header">
-                <button type="submit" class="btn btn-secondary btn-sm">Add Employee</button>
+                <a href="{{route('add.customer')}}" class="btn btn-secondary btn-sm"><i class="fa-sharp fa-solid fa-plus"></i> Add Customer</a>
             </div>
             <div class="card-body">
-                <table id="datatablesSimple" style="text-align: center">
+                <table id="datatablesSimple" style="text-align: center; font-size: 12px">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Phone Number</th>
-                        <th>Department</th>
-                        <th>Designation</th>
-                        <th>Balance</th>
-                        <th>Gender</th>
-                        <th>Blood</th>
-                        <th>Date of Birth</th>
-                        <th>Present Address</th>
-                        <th>Permanent Address</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @php $key=1; @endphp
-                    @foreach ($employees as $item)
+                    @foreach ($customers as $item)
                         <tr>
                             <td>{{ $key++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->department }}</td>
-                            <td>{{ $item->designation }}</td>
-                            <td>{{ $item->balance }}</td>
-                            <td>{{ $item->gender }}</td>
-                            <td>{{ $item->blood }}</td>
-                            <td>{{ $item->dob }}</td>
-                            <td>{{ $item->present_address }}</td>
-                            <td>{{ $item->permanent_address }}</td>
+                            <td>{{ $item->address }}</td>
+                            <td class="btn btn-success btn-sm">
+                                @if($item->status == 1)
+                                    Active
+                                @else
+                                Inactive
+                                @endif
+                            </td>
                             <td>
                                 <table style="margin-left: auto;margin-right: auto;">
                                     <tr>
                                         <td>
-                                            <a href="{{route('edit.employee',['id'=>$item->id])}}"
-                                               class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{route('edit.customer',['id'=>$item->id])}}"
+                                               class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                         <td>&nbsp;</td>
                                         <td>
-                                            <form action="{{route('delete.employee')}}" method="post">
+                                            <form action="{{route('delete.customer')}}" method="post">
                                                 @csrf
-                                                <input type="hidden" name="employee_id"
+                                                <input type="hidden" name="customer_id"
                                                        value="{{$item->id}}">
                                                 <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('Are you sure delete this?')">
-                                                    Delete
+                                                    <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -80,6 +74,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

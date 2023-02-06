@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +23,30 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    Route::get('/employee/add', [EmployeeController::class, 'addEmployee'])->name('add.employee');
-    Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
-    Route::post('/save-employee', [EmployeeController::class, 'saveEmployee'])->name('save.employee');
-    Route::get('/edit_employee/{id}', [EmployeeController::class, 'editEmployee'])->name('edit.employee');
-    Route::post('/update_employee', [EmployeeController::class, 'updateEmployee'])->name('update.employee');
-    Route::post('/delete_employee', [EmployeeController::class, 'deleteEmployee'])->name('delete.employee');
+    //Employee Controller
+    Route::controller(EmployeeController::class)->group(function () {
+        Route::get('/employee',  'index')->name('employee');
+        Route::get('/employee-add',  'addEmployee')->name('add.employee');
+        Route::post('/save-employee',  'saveEmployee')->name('save.employee');
+        Route::get('/edit_employee/{id}',  'editEmployee')->name('edit.employee');
+        Route::post('/update_employee',  'updateEmployee')->name('update.employee');
+        Route::post('/delete_employee',  'deleteEmployee')->name('delete.employee');
+    });
+
+    //Customer Controller
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/customer',  'index')->name('customer');
+        Route::get('/customer-add',  'addCustomer')->name('add.customer');
+        Route::post('/save-customer',  'saveCustomer')->name('save.customer');
+        Route::get('/edit-customer/{id}',  'editCustomer')->name('edit.customer');
+        Route::post('/update-customer',  'updateCustomer')->name('update.customer');
+        Route::post('/delete-customer',  'deleteCustomer')->name('delete.customer');
+    });
+
+    //Site Controller
+    Route::controller(SiteController::class)->group(function () {
+
+    });
+
 
 });

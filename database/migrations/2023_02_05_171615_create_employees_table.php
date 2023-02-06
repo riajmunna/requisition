@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->string('department');
-            $table->string('designation');
-            $table->string('balance');
-            $table->string('gender');
-            $table->string('blood');
-            $table->date('dob');
-            $table->string('present_address');
-            $table->string('permanent_address');
+            $table->integer('user_id');
+//            $table->string('phone');
+//            $table->string('department');
+//            $table->string('designation');
+//            $table->string('balance');
+//            $table->string('gender');
+//            $table->string('blood');
+//            $table->date('dob');
+//            $table->string('present_address');
+//            $table->string('permanent_address');
             $table->timestamps();
         });
     }

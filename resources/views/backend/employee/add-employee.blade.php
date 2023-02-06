@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-
-
-
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-2">
+            <div class="col-md-9 mt-2 offset-md-2">
+                <div class="mt-4">
+                    @include('backend.admin.include.alert')
+                </div>
                 <div class="card mt-2">
                     <div class="card-header">
                         <h3 class="text-center">Employee Info</h3>
@@ -28,6 +28,17 @@
                                         <label class="form-label">Phone Number</label>
                                         <input type="text" class="form-control" name="phone" required>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password" required>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="mb-2">
@@ -69,12 +80,12 @@
                                         <label class="form-label">Blood Group </label>
                                         <select name="blood">
                                             <option value="none" selected> Select Blood Group</option>
-                                            <option value="1"> A+</option>
-                                            <option value="1"> A-</option>
-                                            <option value="1"> B+</option>
-                                            <option value="1"> B-</option>
-                                            <option value="1"> O+</option>
-                                            <option value="1"> O-</option>
+                                            <option value="A+"> A+</option>
+                                            <option value="A-"> A-</option>
+                                            <option value="B+"> B+</option>
+                                            <option value="B-"> B-</option>
+                                            <option value="O+"> O+</option>
+                                            <option value="O-"> O-</option>
                                         </select>
                                     </div>
                                 </div>
@@ -93,9 +104,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-sm">ADD</button>
-                                </div>
+{{--                                <div class="d-grid">--}}
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+{{--                                </div>--}}
                             </div>
                         </form>
                     </div>
