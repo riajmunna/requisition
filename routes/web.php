@@ -88,16 +88,20 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         });
     });
 
-        Route::group(['middleware' => 'employee'], function () {
-            //Advance History
-            Route::get('/add-advance', [AdvanceController::class, 'addAdvance'])->name('add.advance.history');
-            Route::post('/save-advance', [AdvanceController::class, 'saveAdvance'])->name('save.advance.history');
+    Route::group(['middleware' => 'employee'], function () {
+        //Advance History
+        Route::get('/add-advance', [AdvanceController::class, 'addAdvance'])->name('add.advance.history');
+        Route::post('/save-advance', [AdvanceController::class, 'saveAdvance'])->name('save.advance.history');
 
 
-            //Requisition
-            Route::get('/add-requisition', [RequisitionController::class, 'addRequisition'])->name('add.requisition');
-            Route::post('/save-requisition', [RequisitionController::class, 'saveRequisition'])->name('save.requisition');
-        });
-
-
+        //Requisition
+        Route::get('/requisition', [RequisitionController::class, 'index'])->name('requisition');
+        Route::get('/add-requisition', [RequisitionController::class, 'addRequisition'])->name('add.requisition');
+        Route::post('/save-requisition', [RequisitionController::class, 'saveRequisition'])->name('save.requisition');
+        Route::get('/edit-requisition/{id}', [RequisitionController::class, 'editRequisition'])->name('edit.requisition');
+        Route::post('/update-requisition', [RequisitionController::class, 'updateRequisition'])->name('update.requisition');
+        Route::post('/delete-requisition', [RequisitionController::class, 'deleteRequisition'])->name('delete.requisition');
     });
+
+
+});

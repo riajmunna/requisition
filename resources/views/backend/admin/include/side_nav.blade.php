@@ -35,8 +35,8 @@
                     <div class="collapse" id="collapseEmployee" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{route('add.employee')}}">Add Employee</a>
                             <a class="nav-link" href="{{route('employee')}}">Employee List</a>
+                            <a class="nav-link" href="{{route('add.employee')}}">Add Employee</a>
                         </nav>
                     </div>
                     {{--   Advance History  --}}
@@ -104,8 +104,8 @@
                     <div class="collapse" id="collapseRequisition" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{route('requisition')}}">Requisition List </a>
                             <a class="nav-link" href="{{route('add.requisition')}}">Add Requisition</a>
-                            <a class="nav-link" href="#">Requisition List </a>
                         </nav>
                     </div>
                 @else

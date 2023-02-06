@@ -24,7 +24,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('backend.employee.view-employee', compact('employees'));
+        return view('backend.employee.index', compact('employees'));
     }
 
     public function saveEmployee(Request $request)

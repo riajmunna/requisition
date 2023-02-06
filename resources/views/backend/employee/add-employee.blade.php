@@ -81,9 +81,9 @@
                                         <label class="form-label">Gender </label>
                                         <select class="form-control" name="gender">
                                             <option value="none" selected> Select</option>
-                                            <option value="male"> Male</option>
-                                            <option value="female"> Female</option>
-                                            <option value="other"> Others</option>
+                                            <option value="Male"> Male</option>
+                                            <option value="Female"> Female</option>
+                                            <option value="Others"> Others</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
