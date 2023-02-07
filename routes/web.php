@@ -10,6 +10,8 @@ use App\Http\Controllers\AdvanceController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\AdvancedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,32 +78,54 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('/edit-site/{id}', 'editSite')->name('edit.site');
             Route::post('/update-site', 'updateSite')->name('update.site');
             Route::post('/delete-site', 'deleteSite')->name('delete.site');
-
-
-            //Advance History List
-            Route::get('/advance-history-list', [AdvanceController::class, 'advanceHistoryList'])->name('advance.history.list');
-            Route::get('/edit-advance/{id}', [AdvanceController::class, 'editAdvance'])->name('edit.advance');
-            Route::post('/update-advance', [AdvanceController::class, 'updateAdvance'])->name('update.advance');
-            Route::post('/delete-advance', [AdvanceController::class, 'deleteAdvance'])->name('delete.advance');
-
-
         });
+
+        //Item Controller
+        Route::controller(ItemController::class)->group(function () {
+            Route::get('/item', 'index')->name('item');
+            Route::get('/item-add', 'addItem')->name('add.item');
+            Route::post('/save-item', 'saveItem')->name('save.item');
+            Route::get('/edit-item/{id}', 'editItem')->name('edit.item');
+            Route::post('/update-item', 'updateItem')->name('update.item');
+            Route::post('/delete-item', 'deleteItem')->name('delete.item');
+        });
+
+        //Advanced Controller
+        Route::controller(AdvancedController::class)->group(function () {
+            Route::get('/advanced', 'index')->name('advanced');
+            Route::get('/advanced-add', 'addAdvanced')->name('add.advanced');
+            Route::post('/save-advanced', 'saveAdvanced')->name('save.advanced');
+            Route::get('/edit-advanced/{id}', 'editAdvanced')->name('edit.advanced');
+            Route::post('/update-advanced', 'updateAdvanced')->name('update.advanced');
+            Route::post('/delete-advanced', 'deleteAdvanced')->name('delete.advanced');
+        });
+
+
+
+
+
+        //Advance History List
+        Route::get('/advance-history-list', [AdvanceController::class, 'advanceHistoryList'])->name('advance.history.list');
+        Route::get('/edit-advance/{id}', [AdvanceController::class, 'editAdvance'])->name('edit.advance');
+        Route::post('/update-advance', [AdvanceController::class, 'updateAdvance'])->name('update.advance');
+        Route::post('/delete-advance', [AdvanceController::class, 'deleteAdvance'])->name('delete.advance');
+
+
     });
-
-    Route::group(['middleware' => 'employee'], function () {
-        //Advance History
-        Route::get('/add-advance', [AdvanceController::class, 'addAdvance'])->name('add.advance.history');
-        Route::post('/save-advance', [AdvanceController::class, 'saveAdvance'])->name('save.advance.history');
-
-
-        //Requisition
-        Route::get('/requisition', [RequisitionController::class, 'index'])->name('requisition');
-        Route::get('/add-requisition', [RequisitionController::class, 'addRequisition'])->name('add.requisition');
-        Route::post('/save-requisition', [RequisitionController::class, 'saveRequisition'])->name('save.requisition');
-        Route::get('/edit-requisition/{id}', [RequisitionController::class, 'editRequisition'])->name('edit.requisition');
-        Route::post('/update-requisition', [RequisitionController::class, 'updateRequisition'])->name('update.requisition');
-        Route::post('/delete-requisition', [RequisitionController::class, 'deleteRequisition'])->name('delete.requisition');
-    });
-
-
 });
+
+Route::group(['middleware' => 'employee'], function () {
+    //Advance History
+    Route::get('/add-advance', [AdvanceController::class, 'addAdvance'])->name('add.advance.history');
+    Route::post('/save-advance', [AdvanceController::class, 'saveAdvance'])->name('save.advance.history');
+
+
+    //Requisition
+    Route::get('/requisition', [RequisitionController::class, 'index'])->name('requisition');
+    Route::get('/add-requisition', [RequisitionController::class, 'addRequisition'])->name('add.requisition');
+    Route::post('/save-requisition', [RequisitionController::class, 'saveRequisition'])->name('save.requisition');
+    Route::get('/edit-requisition/{id}', [RequisitionController::class, 'editRequisition'])->name('edit.requisition');
+    Route::post('/update-requisition', [RequisitionController::class, 'updateRequisition'])->name('update.requisition');
+    Route::post('/delete-requisition', [RequisitionController::class, 'deleteRequisition'])->name('delete.requisition');
+});
+

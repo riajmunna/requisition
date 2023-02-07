@@ -23,6 +23,7 @@
                             <a class="nav-link" href="{{route('department')}}">Department</a>
                             <a class="nav-link" href="{{route('designation')}}">Designation</a>
                             <a class="nav-link" href="{{route('site')}}">Site</a>
+                            <a class="nav-link" href="{{route('item')}}">Item</a>
                         </nav>
                     </div>
                     {{--  Employees  --}}
