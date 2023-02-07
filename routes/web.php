@@ -12,6 +12,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AdvancedController;
+use App\Http\Controllers\AccountingFinanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,5 +128,18 @@ Route::group(['middleware' => 'employee'], function () {
     Route::get('/edit-requisition/{id}', [RequisitionController::class, 'editRequisition'])->name('edit.requisition');
     Route::post('/update-requisition', [RequisitionController::class, 'updateRequisition'])->name('update.requisition');
     Route::post('/delete-requisition', [RequisitionController::class, 'deleteRequisition'])->name('delete.requisition');
+
+
+    //Accounting and Finance Controller
+    Route::controller(AccountingFinanceController::class)->group(function () {
+        Route::get('/advance-list', 'advanceList')->name('advance.list');
+        Route::get('/create-advance-list', 'createAdvanceList')->name('create.advance.list');
+        Route::get('/advance-approval', 'advanceApproval')->name('advance.approval');
+        Route::get('/bill-requisition-list', 'billRequisitionList')->name('bill.requisition.list');
+        Route::get('/create-bill-requisition-list', 'createBillRequisitionList')->name('create.bill.requisition.list');
+        Route::get('/bill-requisition-approval', 'billRequisitionApproval')->name('bill.requisition.approval');
+        Route::get('/summary-report', 'summaryReport')->name('summary.report');
+    });
+
 });
 
