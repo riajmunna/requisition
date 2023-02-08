@@ -117,8 +117,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 Route::group(['middleware' => 'employee'], function () {
     //Advance History
-    Route::get('/add-advance', [AdvanceController::class, 'addAdvance'])->name('add.advance.history');
-    Route::post('/save-advance', [AdvanceController::class, 'saveAdvance'])->name('save.advance.history');
+    Route::get('/advance-list', [AdvanceController::class, 'index'])->name('advance.list');
+    Route::get('/create-advance-list', [AdvanceController::class, 'create'])->name('create.advance.list');
+    Route::post('/save-advance', [AdvanceController::class, 'store'])->name('save.advance.list');
 
 
     //Requisition
@@ -132,8 +133,8 @@ Route::group(['middleware' => 'employee'], function () {
 
     //Accounting and Finance Controller
     Route::controller(AccountingFinanceController::class)->group(function () {
-        Route::get('/advance-list', 'advanceList')->name('advance.list');
-        Route::get('/create-advance-list', 'createAdvanceList')->name('create.advance.list');
+//        Route::get('/advance-list', 'advanceList')->name('advance.list');
+//        Route::get('/create-advance-list', 'createAdvanceList')->name('create.advance.list');
         Route::get('/advance-approval', 'advanceApproval')->name('advance.approval');
         Route::get('/bill-requisition-list', 'billRequisitionList')->name('bill.requisition.list');
         Route::get('/create-bill-requisition-list', 'createBillRequisitionList')->name('create.bill.requisition.list');

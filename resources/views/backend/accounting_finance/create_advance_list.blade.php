@@ -25,7 +25,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form>
+                        <form  method="post" action="{{route('save.advance.list')}}">
                             @csrf
                             <label class="form-label">Project Manager Name</label>
                             <select class="form-control mb-3" name="manager_name" id="">
@@ -40,12 +40,12 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <input class="form-control" name="amount" type="number" placeholder="Enter Amount">
-                                <label for="name">Amount</label>
+                                <label for="name">Amount(BDT)</label>
                             </div>
 
                             <div class="mt-4 mb-0">
                                 {{--                                <div class="d-grid">--}}
-                                <button type="submit" class="btn btn-primary btn-block">Create</button>
+                                <button type="submit" class="btn btn-primary btn-block">Save</button>
                                 {{--                                </div>--}}
                             </div>
                         </form>

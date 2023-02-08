@@ -23,27 +23,31 @@
                         <th>Requisition No.</th>
                         <th>Customer</th>
                         <th>Site No.</th>
-                        <th>Amount</th>
                         <th>Description</th>
+                        <th>Amount(BDT)</th>
+                        <th>Paid(BDT)</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @php $key=1; @endphp
-                    @foreach ($advance_lists as $item)
+                    @foreach ($data as $item)
                         <tr>
                             <td>{{ $key++ }}</td>
                             <td>{{ $item->requisition_id }}</td>
-                            <td>{{ $item->customer->name }}</td>
-                            <td>{{ $item->site->name}}</td>
-                            <td>{{ $item->amount }}</td>
+                            <td>{{$item->getStaff->name}}</td>
+                            <td>{{ $item->getManager->name}}</td>
                             <td>{{ $item->description }}</td>
+                            <td>{{ number_format(@$item->amount, 2) }}</td>
+                            <td>{{ number_format(@$item->paid, 2) }}</td>
                             <td>
-                                @if($item->status == 0)
-                                    Pending
-                                @else
-                                Approved
+                                @if ($item->status ==  0)
+                              <label class="badge badge-danger">Pending</label>
+                                @elseif ($item->status == 1)
+                                <label class="badge badge-success">Approved</label>
+                                @elseif ($item->status == 2)
+                               <label class="badge badge-success">Paid</label>
                                 @endif
                             </td>
                             <td>
